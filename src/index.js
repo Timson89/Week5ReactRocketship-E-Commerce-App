@@ -7,12 +7,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faShoppingCart, faTimes, faBolt, faBookOpen, faTags } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faBars,faShoppingCart, faTimes);
+library.add(faBars,faShoppingCart, faTimes, faBolt, faBookOpen, faTags);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
