@@ -27,4 +27,4 @@ const Discounted = () => {
   )
 }
 
-export default Discounted
+export default Discounted;

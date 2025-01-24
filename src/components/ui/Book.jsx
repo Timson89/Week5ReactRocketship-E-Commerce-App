@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react'
+import React from 'react';
 
 const Book = ({ book }) => {
 
@@ -36,4 +36,4 @@ const Book = ({ book }) => {
   )
 }
 
-export default Book
+export default Book;
