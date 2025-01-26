@@ -29,8 +29,8 @@ const Nav = () => {
             </a>
           </li>
           <li className="nav__list">
-            <a className="nav__link" href="/book">
-        Book
+            <a className="nav__link" href="/books">
+        Books
             </a>
           </li>
           <button className="btn__menu" onClick={openMenu}>
@@ -54,8 +54,8 @@ const Nav = () => {
               </a>
             </li>
             <li className="menu__list">
-              <a className="menu__link" href="/book">
-          Book
+              <a className="menu__link" href="/books">
+          Books
               </a>
             </li>
             <li className="menu__list">
