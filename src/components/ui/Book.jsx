@@ -4,18 +4,18 @@ import Rating   from '../ui/Rating';
 import Price    from '../Price.jsx';   
 
 
-const Book = ({ book }) => {
+const Book = ({ book, id }) => {
 
   return (
 
     <div className="book">
-      <Link to="/books/1">
+      <Link to={`/books/${book.id}`}>
         <figure className="book__img--wrapper">
           <img className="book__img" src={ book.url } alt="A Book Cover" />
         </figure>
       </Link>
       <div className="book__title">
-        <Link className='book__title--link' to="/books/1">
+        <Link className='book__title--link' to={`/books/${book.id}`}>
           { book.title }
         </Link>
       </div>
