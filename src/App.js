@@ -24,6 +24,8 @@ function App() {
 
   function addToCart(book){
 
+    // *** How to add multiple books to Cart... *** //
+
     // const dupeItem = cart.find(item => +item.id === +book.id)
 
     // if (dupeItem){
@@ -43,7 +45,7 @@ function App() {
     //   }))
     // } else {
 
-    //   setCart([...cart, {...book, quantity: 1 }])
+    //   setCart([...cart, { ...book, quantity: 1 }])
     // }
 
     setCart([...cart, book]);
@@ -63,7 +65,7 @@ function App() {
         <Nav />
         <Route path="/" exact component={Home} />
         <Route path="/books" exact  render={() => <Books books={ books } /> } />
-        <Route path="/books/:id" render={() => <BooksInfo books={ books } addToCart={ addToCart } /> } />
+        <Route path="/books/:id" render={() => <BooksInfo cart={ cart } books={ books } addToCart={ addToCart } /> } />
         <Route path="/cart" render={() => <Cart books={ books } /> } />
         <Footer />
       </div>

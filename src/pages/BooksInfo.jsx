@@ -1,4 +1,4 @@
-import React               from 'react';
+// import React               from 'react';
 import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Rating              from '../components/ui/Rating.jsx';
@@ -12,14 +12,14 @@ const BooksInfo = ({ books, addToCart, cart }) => {
   const book = books.find((book) => +book.id === +id);
   // console.log(book);
 
-  function addToCart(book){
+  function addBookToCart(book){
 
     addToCart(book);
   }
 
   function isBookInCart(){
 
-    return cart.find(book => +book.id === +id); // <-- Deprecated, I think? --
+    return cart.find(book => +book.id === +id);
   }
 
   return (
@@ -62,11 +62,13 @@ const BooksInfo = ({ books, addToCart, cart }) => {
                   </p>
                 </div>
                 { isBookInCart() 
-                  ? <button className="btn">
-              Checkout
-                    </button> 
-                  : <button className="btn" onClick={() => addToCart(book)}>
-              Add To Cart
+                  ? <Link className='book__link' to={`/cart/${book.id}`}>
+                      <button className="btn">
+                Checkout
+                      </button>
+                    </Link>
+                  : <button className="btn" onClick={() => addBookToCart(book)}>
+                Add To Cart
                     </button>
                 }
               </div>
