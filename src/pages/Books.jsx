@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
-import Book from '../components/ui/Book.jsx';
-
+import Book                from '../components/ui/Book.jsx';
 
 
 const Books = ({ books: intialBooks }) => {

@@ -4,15 +4,16 @@
 // January 22nd 2025
 
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.js';
-import reportWebVitals from './reportWebVitals';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faShoppingCart, faTimes, faBolt, faBookOpen, faTags, faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faBars,faShoppingCart, faTimes, faBolt, faBookOpen, faTags, faStar, faStarHalfAlt);
+import React           from 'react';
+import ReactDOM        from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
+import { library }     from '@fortawesome/fontawesome-svg-core';
+import App             from './App.js';
+
+import { faBars, faShoppingCart, faTimes, faBolt, faBookOpen, faTags, faStar, faStarHalfAlt, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+library.add(faBars,faShoppingCart, faTimes, faBolt, faBookOpen, faTags, faStar, faStarHalfAlt, faArrowLeft);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
