@@ -6,11 +6,21 @@ import Price               from '../components/Price.jsx';
 import Book                from '../components/ui/Book.jsx';
 
 
-const BooksInfo = ({ books }) => {
+const BooksInfo = ({ books, addToCart, cart }) => {
 
   const { id } = useParams();
-  const book = books.find(book => +book.id === +id)
+  const book = books.find((book) => +book.id === +id);
   // console.log(book);
+
+  function addToCart(book){
+
+    addToCart(book);
+  }
+
+  function isBookInCart(){
+
+    return cart.find(book => +book.id === +id); // <-- Deprecated, I think? --
+  }
 
   return (
 
@@ -34,7 +44,7 @@ const BooksInfo = ({ books }) => {
               </figure>
               <div className="book__selected--description">
                 <h2 className="book__selected--title">
-            {book.title}
+            { book.title }
                 </h2>
                 <Rating rating={ book.rating } />
                 <div className="book__selected--price">
@@ -51,9 +61,14 @@ const BooksInfo = ({ books }) => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsam accusantium animi dicta temporibus mollitia saepe necessitatibus ab debitis qui?
                   </p>
                 </div>
-                <button className="btn">
-            Add To Cart
-                </button>
+                { isBookInCart() 
+                  ? <button className="btn">
+              Checkout
+                    </button> 
+                  : <button className="btn" onClick={() => addToCart(book)}>
+              Add To Cart
+                    </button>
+                }
               </div>
             </div>
           </div>
@@ -66,8 +81,10 @@ const BooksInfo = ({ books }) => {
               </h2>
             </div>
             <div className="books">
-              {
-                books.filter((book) => book.rating === 5 && +book.id !== +id).slice(0, 4).map(book => <Book book={ book } key={ book.id } /> )
+              { books
+                .filter((book) => book.rating === 5 && +book.id !== +id)
+                .slice(0, 4)
+                .map(book => <Book book={ book } key={ book.id } /> )
               }
             </div>
           </div>
