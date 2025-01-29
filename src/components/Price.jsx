@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Price = ({ book, originalPrice, salePrice }) => {
+const Price = ({ originalPrice, salePrice }) => {
 
   return (
 

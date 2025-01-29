@@ -20,9 +20,68 @@ import Cart                             from './pages/Cart.jsx';
 function App() {
 
 
-  const [cart, setCart] = useState([]);
+  // *** See commented out Code below on how to add more than one of the same book to Cart... *** //
+
+  const [cart, setCart] = useState([ ]);
 
   function addToCart(book){
+
+    setCart([...cart, { ...book, quantity: 1 }]);
+  }
+
+  function changeQty(book, quantity){
+
+      setCart(cart.map((item) => item.id === book.id
+
+        ? { ...item, quantity: +quantity } 
+        : item
+      )
+    )
+  }
+
+  function removeBookFromCart(item){
+
+    setCart(cart.filter((book) => book.id !== item.id))
+
+    // console.log('removed item', item)
+  }
+
+  function cartCounter(){
+
+    let counter = 0;
+
+      cart.forEach((item) => {
+
+        counter += item.quantity
+      }
+    )
+    return counter;
+  }
+
+  useEffect(() => { 
+    
+    // console.log(cart);
+
+  }, [cart]);
+
+
+  return (
+    
+    <Router>
+      <div className="App">
+        <Nav cartCounter={ cartCounter() } />
+        <Route path="/"      exact  component={ Home } />
+        <Route path="/books" exact  render={() => <Books     books={ books } /> } />
+        <Route path="/books/:id"    render={() => <BooksInfo books={ books } cart={ cart } addToCart={ addToCart } /> } />
+        <Route path="/cart"         render={() => <Cart      books={ books } cart={ cart } changeQty={ changeQty } removeBookFromCart={ removeBookFromCart } /> } />
+        <Footer />
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
 
     // *** How to add multiple books to Cart... *** //
 
@@ -47,30 +106,3 @@ function App() {
 
     //   setCart([...cart, { ...book, quantity: 1 }])
     // }
-
-    setCart([...cart, book]);
-  }
-
-  useEffect(() => {
-
-    console.log(cart)
-
-  }, [cart]);
-
-
-  return (
-    
-    <Router>
-      <div className="App">
-        <Nav />
-        <Route path="/" exact component={Home} />
-        <Route path="/books" exact  render={() => <Books books={ books } /> } />
-        <Route path="/books/:id" render={() => <BooksInfo cart={ cart } books={ books } addToCart={ addToCart } /> } />
-        <Route path="/cart" render={() => <Cart books={ books } /> } />
-        <Footer />
-      </div>
-    </Router>
-  );
-}
-
-export default App;

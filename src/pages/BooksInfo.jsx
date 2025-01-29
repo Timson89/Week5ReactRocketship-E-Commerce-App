@@ -7,9 +7,11 @@ import Book                from '../components/ui/Book.jsx';
 
 
 const BooksInfo = ({ books, addToCart, cart }) => {
+  
 
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id);
+  
   // console.log(book);
 
   function addBookToCart(book){
@@ -21,6 +23,7 @@ const BooksInfo = ({ books, addToCart, cart }) => {
 
     return cart.find(book => +book.id === +id);
   }
+
 
   return (
 
